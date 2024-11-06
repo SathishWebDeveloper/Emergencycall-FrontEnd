@@ -12,7 +12,8 @@ interface AmbulanceServiceFormData {
 interface ServiceFormProps {
     fetchItems?: () => Promise<void>;
   }
-const AmbulanceServiceForm: React.FC<any> = ({fetchItems}) => {
+const AmbulanceServiceForm: React.FC<any> = ({fetchItems , keys}) => {
+    
   const [formData, setFormData] = useState<AmbulanceServiceFormData>({
     id: 0,
     name: '',
@@ -37,16 +38,16 @@ const AmbulanceServiceForm: React.FC<any> = ({fetchItems}) => {
   };
 
  const postDoctorData = async() => {
-    console.log("function calling")
+ 
     try {
-        const response = await fetch('http://localhost:5000/api/doctors', {
+        const response = await fetch(`http://localhost:5000/api/${keys==='doctors'?'doctors':'ambulances'}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(formData),
         });
-        console.log("response",response);
+       
   
         if (response.ok) {
           setSubmitStatus('Form submitted successfully!');
@@ -69,6 +70,7 @@ const AmbulanceServiceForm: React.FC<any> = ({fetchItems}) => {
  }
 
   const handleSubmit = async () => {
+    setSubmitStatus('');
     const newErrors = {
       id: formData.id === 0,
       name: formData.name === '',
