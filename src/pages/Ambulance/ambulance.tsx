@@ -36,7 +36,7 @@ export const Ambulance: React.FC = () => {
     const fetchItems = async () => {
       try {
         // change your local server here....
-        const response = await fetch(`http://192.168.1.58:5000/api/ambulances?location=${location}`)
+        const response = await fetch(`http://localhost:5000/api/ambulances?location=${location}`)
         if (!response.ok) {
           throw new Error(`Error: ${response.statusText}`);
         }

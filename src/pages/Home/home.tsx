@@ -19,7 +19,7 @@ export const Home: React.FC = () => {
     const fetchOptions = async () => {
       try {
         // change your local server here....
-        const response = await fetch('http://192.168.1.58:5000/api/locations');
+        const response = await fetch('http://localhost:5000/api/locations');
         const data: any = await response.json();
         setOptions(data.locations)
       } catch (error) {
