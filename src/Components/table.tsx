@@ -10,7 +10,7 @@ const Table = ({ rowdata, coldata }: any) => {
             rows={rowdata}
             columns={coldata}
             initialState={{ pagination: { paginationModel } }}
-            sx={{ border: 0, maxWidth: '1100px' }}
+            sx={{ border: 0, maxWidth: '1200px' }}
         />
 
 
